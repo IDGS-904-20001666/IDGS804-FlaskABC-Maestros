@@ -1,0 +1,49 @@
+{% extends "layout.html"%}
+
+{%block content%}
+{%from "_macros.html" import render_field%}
+<div class="container">
+    <div class="row">
+        <div class="d-flex align-items-start justify-content-start py-3">
+            <h2>Gesti&oacute;n de alumnos</h2>
+        </div>
+        <div class="d-flex align-items-end justify-content-end py-2">
+            <a role="button" href="/alumnos" class="btn btn-success rounded-pill">
+                Agregar Alumno&nbsp;<i class="bi bi-plus-circle"></i>
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="table striped text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alum in alumno %}
+                    <tr>
+                        <td class="align-middle">{{ alum.nombre }}</td>
+                        <td class="align-middle">{{ alum.apellidos }}</td>
+                        <td class="align-middle">{{ alum.email }}</td>
+                        <td class="align-middle"><a role="button" href="eliminar?id={{ alum.id }}"
+                                class="btn btn-danger rounded-pill">
+                                <i class="bi bi-trash-fill h6"></i>
+                            </a>
+                        </td>
+                        <td class="align-middle"><a role="button" href="modificar?id={{ alum.id }}"
+                                class="btn btn-secondary rounded-pill">
+                                <i class="bi bi-pencil-fill h6"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

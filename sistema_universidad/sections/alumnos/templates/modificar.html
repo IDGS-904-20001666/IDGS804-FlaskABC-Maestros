@@ -1,0 +1,33 @@
+{% extends "layout.html"%}
+
+{%block content%}
+{%from "_macros.html" import render_field%}
+<div class="container">
+    <div class="row">
+        <div class="d-flex align-items-start justify-content-start py-3">
+            <h2>Modificaci&oacute;n de alumno</h2>
+        </div>
+        <form action="/modificar" method="post" name="sent" id="form1">
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
+            <div class="d-none">
+                {{render_field(form.id, class='form-control')}}
+            </div>
+            <div class="col-md-6 pb-2">
+                {{render_field(form.nombre, class='form-control')}}
+            </div>
+            <div class="col-md-6 pb-2">
+                {{render_field(form.apellidos, class='form-control')}}
+            </div>
+            <div class="col-md-12 pb-2">
+                {{render_field(form.email, class='form-control')}}
+            </div>
+            <div class="col-md-12 pt-2">
+                <button type="submit" class="btn btn-success rounded-pill py-2 me-2">Modificar&nbsp;<i
+                        class="bi bi-arrow-right-circle"></i></button>
+                <button type="button" onclick="window.location.href='abcompleto'"
+                    class="btn btn-danger rounded-pill py-2">Cancelar&nbsp;<i class="bi bi-x-circle"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}
